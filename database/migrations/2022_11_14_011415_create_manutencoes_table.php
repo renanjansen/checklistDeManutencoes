@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateElevadoresTable extends Migration
+class CreateManutencoesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateElevadoresTable extends Migration
      */
     public function up()
     {
-        Schema::create('elevadores', function (Blueprint $table) {
+        Schema::create('manutencoes', function (Blueprint $table) {
             $table->id();
+            $table->timestamps();
             $table->string('sigla');
             $table->string('endereco');
-            $table->timestamps();
+            $table->string('tipo');
+            $table->foreignId('elevadores_id')->constrained();
         });
     }
 
@@ -26,8 +28,8 @@ class CreateElevadoresTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(Blueprint $table)
     {
-        Schema::dropIfExists('elevadores');
+        $table->foreignId('elevadores_id')->constrained()->onDelete('cascade');
     }
 }

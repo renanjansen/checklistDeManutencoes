@@ -5,17 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Elevador extends Model
+class Manutencao extends Model
 {
     use HasFactory;
-    protected $table = "elevadores";
+    protected $table = "manutencoes";
 
-    public function manutencoes(){
+    public function elevador(){
 
         //informa que a manutenção poderá ter sempre muitos elevadores
-        return $this->hasMany('App\Models\Manutencao');
+        return $this->belongsTo('App\Models\Elevador');
 
     }
-
-
 }

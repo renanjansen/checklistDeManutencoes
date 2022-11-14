@@ -27,17 +27,18 @@
             <div class="container-fluid mt-2 p-2">
                 <h3> Lista de endereços</h3>
                 <form class="d-flex" role="Busca de endereços">
-                    <input class="form-control me-2" type="search" placeholder="Busca de endereços" aria-label="Busca de endereços">
+                    <input class="form-control me-2" type="search" placeholder="Busca de endereços"
+                        aria-label="Busca de endereços">
                     <button class="btn btn-outline-success" type="submit">Busca de endereços</button>
                 </form>
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/manutencoes">
 
                     <button type="button" class="btn btn-primary position-relative p-3">
                         Manutenções feitas
                         <i class="bi bi-tools"style="font-size: 1rem;"></i>
                         <span
                             class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
-                            {{ 3 }}
+                            {{ count($manutencoes) }}
                             <span class="visually-hidden">New alerts</span>
                         </span>
                     </button>
@@ -47,8 +48,27 @@
         </nav>
     </header>
     <main class="mt-5">
-        <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action"></a>
+        <div class="list-group text-center container-fluid">
+            @foreach ($elevadores as $elevador)
+                <form class="mb-1" action="/" method="POST" enctype="multipart/form-data">
+
+                    {{-- MUITO IMPORTANTE!! A diretiva csrf avisa o blade do salvamento  de dados --}}
+                    @csrf
+
+                    <li href="#" class="list-group-item list-group-item-action">
+                        {{ $elevador->sigla }} - {{ $elevador->endereco }} - {{ $elevador->tipo }}
+                        <div class="">
+                            <input type="hidden" name="sigla" value="{{ $elevador->sigla }}">
+                            <input type="hidden" name="endereco" value="{{ $elevador->endereco }}">
+                            <input type="hidden" name="tipo" value="{{ $elevador->tipo }}">
+                            <input type="hidden" name="id" value="{{ $elevador->id }}">
+                            <button type="submit" class="btn btn-success pr-5">Cadastrar manutenção</button>
+                        </div>
+                    </li>
+
+
+                </form>
+            @endforeach
         </div>
 
     </main>

@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ListaEnderecoController;
 
 Route::get('/',[ListaEnderecoController::class, 'listarEnderecos']);
+Route::get('/manutencoes',[ListaEnderecoController::class, 'listarManutencoes']);
+
+
+// define a rota que recebe dados via post da view de cadastro
+Route::post('/',[ListaEnderecoController::class, 'cadastrarManutencoes']);
