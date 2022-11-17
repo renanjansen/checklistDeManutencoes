@@ -35,7 +35,7 @@
             @foreach ($manutencoes as $manutencoesFeitas)
                
 
-                    <li href="#" class="list-group-item list-group-item-action">
+                    <li href="#" class="list-group-item list-group-item-action shadow-lg p-3 mb-2 bg-body rounded">
                         {{ $manutencoesFeitas->sigla }} - {{ $manutencoesFeitas->endereco }} - {{ $manutencoesFeitas->tipo }}
                        
                     </li>

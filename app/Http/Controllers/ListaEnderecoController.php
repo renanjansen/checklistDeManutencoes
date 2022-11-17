@@ -27,6 +27,7 @@ class ListaEnderecoController extends Controller
     public function cadastrarManutencoes(Request $request){
 
         $elevadores = Elevador::all();
+        $manutencoesFeitas = Manutencao::all();
 
         // instância do objeto Elevador da base de dados
         $elevadorAdd = new Manutencao;
@@ -40,7 +41,8 @@ class ListaEnderecoController extends Controller
 
         return view('welcome',
         [
-            'elevadores' => $elevadores
+            'elevadores' => $elevadores,
+            'manutencoes' => $manutencoesFeitas
         ]
         );
 

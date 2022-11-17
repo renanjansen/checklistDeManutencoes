@@ -55,7 +55,7 @@
                     {{-- MUITO IMPORTANTE!! A diretiva csrf avisa o blade do salvamento  de dados --}}
                     @csrf
 
-                    <li href="#" class="list-group-item list-group-item-action">
+                    <li href="#" class="list-group-item list-group-item-action shadow-lg p-3 mb-2 bg-body rounded">
                         {{ $elevador->sigla }} - {{ $elevador->endereco }} - {{ $elevador->tipo }}
                         <div class="">
                             <input type="hidden" name="sigla" value="{{ $elevador->sigla }}">
