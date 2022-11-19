@@ -13,12 +13,17 @@ class ListaEnderecoController extends Controller
 {
     public function listarEnderecos()
     {
-        $elevadores = Elevador::all();
-        $manutencoesFeitas = Manutencao::all();
+        
+        $manutencoes = Manutencao::all();
+        // query que busca dados da coluna elevadores_id
+        $manutencoesFeitas = Manutencao::all()->pluck('elevadores_id');
+        // nessa query a lista de elvadores será atualizada através da busca por manuntenções feitas
+        
+        $elevadores = Elevador::all()->whereNotIn('id',$manutencoesFeitas);
         return view('welcome',
         [
             'elevadores' => $elevadores,
-            'manutencoes' => $manutencoesFeitas
+            'manutencoes' => $manutencoes
         ]
     
     );
@@ -26,8 +31,9 @@ class ListaEnderecoController extends Controller
 
     public function cadastrarManutencoes(Request $request){
 
-        $elevadores = Elevador::all();
-        $manutencoesFeitas = Manutencao::all();
+        
+        $manutencoesFeitas = Manutencao::all()->pluck('elevadores_id');
+        $elevadores = Elevador::all()->whereNotIn('id',$manutencoesFeitas);
 
         // instância do objeto Elevador da base de dados
         $elevadorAdd = new Manutencao;
