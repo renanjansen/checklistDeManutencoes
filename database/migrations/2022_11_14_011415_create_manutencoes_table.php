@@ -28,8 +28,8 @@ class CreateManutencoesTable extends Migration
      *
      * @return void
      */
-    public function down(Blueprint $table)
+    public function down()
     {
-        $table->foreignId('elevadores_id')->constrained()->onDelete('cascade');
+        Schema::dropIfExists('manutencoes');
     }
 }

@@ -45,12 +45,7 @@ class ListaEnderecoController extends Controller
 
         $elevadorAdd->save();
 
-        return view('welcome',
-        [
-            'elevadores' => $elevadores,
-            'manutencoes' => $manutencoesFeitas
-        ]
-        );
+        return redirect('/');
 
     }
 
