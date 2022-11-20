@@ -26,9 +26,9 @@
 
             <div class="container-fluid mt-2 p-2">
                 <h3> Lista de endereços</h3>
-                <form class="d-flex" role="Busca de endereços">
+                <form class="d-flex" action="/" role="Busca de endereços">
                     <input class="form-control me-2" type="search" placeholder="Busca de endereços"
-                        aria-label="Busca de endereços">
+                    name="buscar" aria-label="Busca de endereços">
                     <button class="btn btn-outline-success" type="submit">Busca de endereços</button>
                 </form>
                 <a class="navbar-brand" href="/manutencoes">

@@ -14,16 +14,33 @@ class ListaEnderecoController extends Controller
     public function listarEnderecos()
     {
         
-        $manutencoes = Manutencao::all();
+        
         // query que busca dados da coluna elevadores_id
         $manutencoesFeitas = Manutencao::all()->pluck('elevadores_id');
-        // nessa query a lista de elvadores será atualizada através da busca por manuntenções feitas
+
+         // variavel que acessa a propiedade do request
+         $busca = request('buscar');
+         if ($busca) {
+            $elevadores = Elevador::where([
+ 
+                 // busca por palavras
+                 ['endereco', 'like', '%' . $busca . '%']
+ 
+             ]
+                 
+             )->get();
+         } else{
+            // nessa query a lista de elvadores será atualizada através da busca por manuntenções feitas
+            $elevadores = Elevador::all()->whereNotIn('id',$manutencoesFeitas);
+         }
         
-        $elevadores = Elevador::all()->whereNotIn('id',$manutencoesFeitas);
+        
+        
+        
         return view('welcome',
         [
             'elevadores' => $elevadores,
-            'manutencoes' => $manutencoes
+            'manutencoes' => $manutencoesFeitas
         ]
     
     );
