@@ -25,10 +25,10 @@
         <nav class="navbar text-light bg-dark">
 
             <div class="container-fluid mt-2 p-2">
-                <h3> Lista de endereços</h3>
-                
+                <h3> Lista de Manutenções feitas</h3>
+                 
             </div>
-        </nav>
+        </nav> 
     </header>
     <main class="mt-5">
         <div class="list-group text-center container-fluid">

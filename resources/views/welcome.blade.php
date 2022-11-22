@@ -27,8 +27,8 @@
             <div class="container-fluid mt-2 p-2">
                 <h3> Lista de endereços</h3>
                 <form class="d-flex" action="/" role="Busca de endereços">
-                    <input class="form-control me-2" type="search" placeholder="Busca de endereços"
-                    name="buscar" aria-label="Busca de endereços">
+                    <input class="form-control me-2" type="search" placeholder="Busca de endereços" name="buscar"
+                        aria-label="Busca de endereços">
                     <button class="btn btn-outline-success" type="submit">Busca de endereços</button>
                 </form>
                 <a class="navbar-brand" href="/manutencoes">
@@ -55,13 +55,21 @@
                     {{-- MUITO IMPORTANTE!! A diretiva csrf avisa o blade do salvamento  de dados --}}
                     @csrf
 
-                    <li href="#" class="list-group-item list-group-item-action shadow-lg p-3 mb-2 bg-body rounded">
+                    <li href="#"
+                        class="list-group-item list-group-item-action shadow-lg p-3 mb-2 bg-body rounded">
                         {{ $elevador->sigla }} - {{ $elevador->endereco }} - {{ $elevador->tipo }}
                         <div class="">
                             <input type="hidden" name="sigla" value="{{ $elevador->sigla }}">
                             <input type="hidden" name="endereco" value="{{ $elevador->endereco }}">
                             <input type="hidden" name="tipo" value="{{ $elevador->tipo }}">
                             <input type="hidden" name="id" value="{{ $elevador->id }}">
+                            <div class="container-fluid m-2">
+                            <iframe width="450" height="250" frameborder="0" style="border:0"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC01rey-uIpM1uQFDRTlaCSKG3pGaH3TaA&q={{str_replace(" ","+", $elevador->endereco)}}"
+                                allowfullscreen>
+                            </iframe>
+                            </div>
                             <button type="submit" class="btn btn-success pr-5">Cadastrar manutenção</button>
                         </div>
                     </li>
@@ -70,16 +78,3 @@
                 </form>
             @endforeach
         </div>
-
-    </main>
-
-
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
-
-</body>
-
-</html>
