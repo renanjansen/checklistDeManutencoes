@@ -26,8 +26,17 @@
 
             <div class="container-fluid mt-2 p-2">
                 <h3> Lista de Manutenções feitas</h3>
+                <a class="navbar-brand" href="/">
+
+                    <button type="button" class="btn btn-primary position-relative p-3">
+                        Retornar a lista de endereços
+                        <i class="bi bi-view-list"style="font-size: 1rem;"></i>
+                    </button>
+    
+                </a>
                  
             </div>
+           
         </nav> 
     </header>
     <main class="mt-5">
@@ -36,7 +45,7 @@
                
 
                     <li href="#" class="list-group-item list-group-item-action shadow-lg p-3 mb-2 bg-body rounded">
-                        {{ $manutencoesFeitas->sigla }} - {{ $manutencoesFeitas->endereco }} - {{ $manutencoesFeitas->tipo }}
+                        <span class="border border-danger rounded">{{date("d/m",strtotime($manutencoesFeitas->created_at))}}</span> - {{ $manutencoesFeitas->sigla }} - {{ $manutencoesFeitas->endereco }} - {{ $manutencoesFeitas->tipo }}
                        
                     </li>
 
