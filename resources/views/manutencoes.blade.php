@@ -32,26 +32,43 @@
                         Retornar a lista de endereços
                         <i class="bi bi-view-list"style="font-size: 1rem;"></i>
                     </button>
-    
+
                 </a>
-                 
+
             </div>
-           
-        </nav> 
+
+        </nav>
     </header>
     <main class="mt-5">
-        <div class="list-group text-center container-fluid">
+
+
+        <div class="accordion" id="accordionExample">
             @foreach ($manutencoes as $manutencoesFeitas)
-               
-
-                    <li href="#" class="list-group-item list-group-item-action shadow-lg p-3 mb-2 bg-body rounded">
-                        <span class="border border-danger rounded">{{date("d/m",strtotime($manutencoesFeitas->created_at))}}</span> - {{ $manutencoesFeitas->sigla }} - {{ $manutencoesFeitas->endereco }} - {{ $manutencoesFeitas->tipo }}
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading{{ $manutencoesFeitas->id }}">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse{{ $manutencoesFeitas->id }}" aria-expanded="true" aria-controls="collapse{{ $manutencoesFeitas->id }}">
+                        Accordion Item #{{ $manutencoesFeitas->id }}
+                    </button>
+                </h2>
+                <div id="collapse{{ $manutencoesFeitas->id }}" class="accordion-collapse collapse show" aria-labelledby="heading{{ $manutencoesFeitas->id }}"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
                        
-                    </li>
-
-
-              
+                            <li href="#"
+                                class="list-group-item list-group-item-action shadow-lg p-3 mb-2 bg-body rounded">
+                                <span
+                                    class="border border-danger rounded">{{ date('d/m', strtotime($manutencoesFeitas->created_at)) }}</span>
+                                - {{ $manutencoesFeitas->sigla }} - {{ $manutencoesFeitas->endereco }} -
+                                {{ $manutencoesFeitas->tipo }}
+                                
+                            </li>
+                        
+                    </div>
+                </div>
+            </div>
             @endforeach
+
         </div>
 
     </main>
