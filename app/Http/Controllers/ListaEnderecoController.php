@@ -69,10 +69,25 @@ class ListaEnderecoController extends Controller
     public function listarManutencoes(){
 
         $manutencoesFeitas = Manutencao::all();
+        $mesesDoAno = [
+            'Janeiro',
+            'Fevereiro',
+            'Março',
+            'Abril',
+            'Maio',
+            'Junho',
+            'Julho',
+            'Agosto',
+            'Setembro',
+            'Outubro',
+            'Novembro' ,
+            'Dezembro'
+        ];
 
         return view('manutencoes',
         [
-            'manutencoes' => $manutencoesFeitas
+            'manutencoes' => $manutencoesFeitas,
+            'mesesDoAno' =>  $mesesDoAno
         ]
         );
 
