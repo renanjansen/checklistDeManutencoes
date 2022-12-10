@@ -70,7 +70,7 @@
                                 allowfullscreen>
                             </iframe>
                             </div>
-                            <button type="submit" class="btn btn-success pr-5">Cadastrar manutenção</button>
+                            <button type="submit" class="btn btn-success pr-5" onclick="return confirm('Tem certeza que deseja cadastrar o elevador  {{ $elevador->endereco }} ?')">Cadastrar manutenção</button>
                         </div>
                     </li>
 
