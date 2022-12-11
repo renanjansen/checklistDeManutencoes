@@ -44,9 +44,9 @@
             @foreach ($mesesDoAno as $key => $mesDoAno)
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="heading{{ $mesDoAno }}">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        <button class="accordion-button {{ $temManutencao }}" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapse{{ $mesDoAno }}" aria-expanded="true"
-                            aria-controls="collapse{{ $mesDoAno }}">
+                            aria-controls="collapse{{ $mesDoAno }}" id="btnMes">
                             {{ $mesDoAno }}
                         </button>
                     </h2>
@@ -61,7 +61,6 @@
                                             class="border border-danger rounded">{{ date('d/m', strtotime($manutencoesFeitas->created_at)) }}</span>
                                         - {{ $manutencoesFeitas->sigla }} - {{ $manutencoesFeitas->endereco }} -
                                         {{ $manutencoesFeitas->tipo }}
-
                                     </li>
                                 @endif
                             @endforeach
@@ -72,7 +71,7 @@
 
         </div>
 
-   
+
     </main>
 
 
@@ -80,6 +79,24 @@
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script>
+        var btnMes = document.querySelectorAll('.accordion-button');
+        var corpoDoAcordeao = document.querySelectorAll('.accordion-body');
+        var temManutencao = [];
+        for (let i = 0; i < btnMes.length; i++) {
+            if (corpoDoAcordeao[i].hasChildNodes()) {
+
+                
+              
+
+           
+            
+        }
+
+        
+        
+        
     </script>
 
 </body>

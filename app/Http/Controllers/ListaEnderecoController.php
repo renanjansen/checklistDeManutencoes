@@ -84,10 +84,14 @@ class ListaEnderecoController extends Controller
             'Dezembro'
         ];
 
+        $temManutencao = '';
+
         return view('manutencoes',
         [
             'manutencoes' => $manutencoesFeitas,
-            'mesesDoAno' =>  $mesesDoAno
+            'mesesDoAno' =>  $mesesDoAno,
+            'temManutencao' => $temManutencao
+            
         ]
         );
 
