@@ -63,8 +63,8 @@
                             <input type="hidden" name="endereco" value="{{ $elevador->endereco }}">
                             <input type="hidden" name="tipo" value="{{ $elevador->tipo }}">
                             <input type="hidden" name="id" value="{{ $elevador->id }}">
-                            <div class="container-fluid m-2">
-                            <iframe width="450" height="250" frameborder="0" style="border:0"
+                            <div class="embed-responsive embed-responsive-16by9 m-2">
+                            <iframe class="embed-responsive-item" frameborder="0" style="border:0"
                                 referrerpolicy="no-referrer-when-downgrade"
                                 src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC01rey-uIpM1uQFDRTlaCSKG3pGaH3TaA&q={{str_replace(" ","+", $elevador->endereco)}}"
                                 allowfullscreen>
