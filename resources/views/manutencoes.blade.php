@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+tab<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -83,16 +83,19 @@
     <script>
         var btnMes = document.querySelectorAll('.accordion-button');
         var corpoDoAcordeao = document.querySelectorAll('.accordion-body');
-        var temManutencao = [];
-        for (let i = 0; i < btnMes.length; i++) {
-            if (corpoDoAcordeao[i].hasChildNodes()) {
+       
+       
+        for (let i = 0; i < corpoDoAcordeao.length; i++) {
 
+            var li = corpoDoAcordeao[i].querySelector('.list-group-item');
+            if (li !== null) {
                 
-              
+                btnMes[i].setAttribute("class","accordion-button bg-danger")
 
-           
-            
-        }
+            }
+
+    }
+        
 
         
         
