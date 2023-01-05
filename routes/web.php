@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 use App\Http\Controllers\ListaEnderecoController;
+use App\Http\Controllers\OsController;
 
-Route::get('/',[ListaEnderecoController::class, 'listarEnderecos']);
-Route::get('/manutencoes',[ListaEnderecoController::class, 'listarManutencoes']);
+Route::get('/' ,[ListaEnderecoController::class, 'listarEnderecos']);
+Route::get('/manutencoes' ,[ListaEnderecoController::class, 'listarManutencoes']);
+Route::get('/registroDeOs',[OsController::class, 'cadastrarOs']);
 
 
 // define a rota que recebe dados via post da view de cadastro

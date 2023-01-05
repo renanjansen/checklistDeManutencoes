@@ -13,7 +13,12 @@ class Manutencao extends Model
     public function elevador(){
 
         //informa que a manutenção poderá ter sempre muitos elevadores
-        return $this->belongsTo('App\Models\Elevador');
+        return $this->hasMany('App\Models\Elevador');
 
+    }
+
+    public function oss()
+    {
+        return $this->hasOne('App\Models\Os');
     }
 }
