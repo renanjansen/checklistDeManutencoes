@@ -16,6 +16,14 @@ class CreateOsTable extends Migration
         Schema::create('os', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('atendimento');
+            $table->string('cliente');
+            $table->string('mecanico');
+            $table->string('defeito');
+            $table->string('solucao');
+            $table->string('material');
+            $table->string('imagens');
+            $table->foreignId('elevadores_id')->constrained();
         });
     }
 

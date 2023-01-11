@@ -46,7 +46,7 @@ class ListaEnderecoController extends Controller
     );
     }
 
-    public function cadastrarManutencoes(Request $request){
+    public function cadastrarManutencoes(){
 
         
         $manutencoesFeitas = Manutencao::all()->pluck('elevadores_id');

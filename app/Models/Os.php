@@ -14,19 +14,7 @@ class Os extends Model
     use HasFactory;
     protected $table = "Os";
 
-        /**
-         * Informa que a manutenção poderá ter sempre muitos elevadores.
-         * 
-         * @return $this->hasOne('App\Models\Manutencao')
-         */
-    public function manutencoes()
-    {
-
-        //
-        return $this->hasOne('App\Models\Manutencao', 'foreign_key');
-
-    }
-
+        
         /**
          * Informa que a Os poderá ter um elevadores.
          * 

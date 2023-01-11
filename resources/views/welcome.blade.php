@@ -47,6 +47,9 @@
             </div>
         </nav>
     </header>
+    @if (session('msg'))
+                        <p class="msg text-center" style="background-color: gold; border-color:black;">{{ session('msg') }}</p>
+            @endif
     <main class="mt-5">
         <div class="list-group text-center container-fluid">
             @foreach ($elevadores as $elevador)
@@ -59,9 +62,7 @@
                         class="list-group-item list-group-item-action shadow-lg p-3 mb-2 bg-body rounded">
                         {{ $elevador->sigla }} - {{ $elevador->endereco }} - {{ $elevador->tipo }}
                         <div class="">
-                            <input type="hidden" name="sigla" value="{{ $elevador->sigla }}">
-                            <input type="hidden" name="endereco" value="{{ $elevador->endereco }}">
-                            <input type="hidden" name="tipo" value="{{ $elevador->tipo }}">
+                           
                             <input type="hidden" name="id" value="{{ $elevador->id }}">
                             <div class="embed-responsive embed-responsive-16by9 m-2">
                             <iframe class="embed-responsive-item" frameborder="0" style="border:0"
@@ -70,8 +71,11 @@
                                 allowfullscreen>
                             </iframe>
                             </div>
-                            <button type="submit" class="btn btn-success pr-5" onclick="return confirm('Tem certeza que deseja cadastrar o elevador  {{ $elevador->endereco }} ?')">Cadastrar manutenção</button>
-                        </div>
+                            <a href="/registroDeOs/{{ $elevador->id}}">
+                            <button type="button" class="btn btn-success pr-5" onclick="return confirm('Tem certeza que deseja cadastrar o elevador  {{ $elevador->endereco }} ?')">Cadastrar manutenção</button>
+                      
+                            </a>
+                              </div>
                     </li>
 
 
