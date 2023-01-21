@@ -15,10 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ListaEnderecoController;
 use App\Http\Controllers\OsController;
+use App\Http\Controllers\GeradorDePdfController;
 
 Route::get('/' ,[ListaEnderecoController::class, 'listarEnderecos']);
 Route::get('/manutencoes' ,[ListaEnderecoController::class, 'listarManutencoes']);
 Route::get('/registroDeOs/{id}',[OsController::class, 'carregaOS'])->name('registroDeOs');
+Route::get('/pdfDeOs', [GeradorDePdfController::class, 'montaPdf']);
 
 
 // define a rota que recebe dados via post da view de cadastro

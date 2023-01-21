@@ -7,23 +7,23 @@ use Illuminate\Database\Eloquent\Model;
 
     /**
      * Informa que a manutenção poderá ter sempre muitos elevadores.
-     */    
+     */
 
 class Os extends Model
 {
     use HasFactory;
-    protected $table = "Os";
+    protected $table = "os";
 
-        
+
         /**
          * Informa que a Os poderá ter um elevadores.
-         * 
+         *
          * @return $this->hasOne('App\Models\Manutencao')
          */
     public function elevador()
     {
 
-       
+
         return $this->hasOne('App\Models\Elevador', 'foreign_key');
 
     }
