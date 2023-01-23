@@ -44,24 +44,28 @@
             @foreach ($mesesDoAno as $key => $mesDoAno)
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="heading{{ $mesDoAno }}">
+
                         <button class="accordion-button {{ $temManutencao }}" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapse{{ $mesDoAno }}" aria-expanded="true"
                             aria-controls="collapse{{ $mesDoAno }}" id="btnMes">
                             {{ $mesDoAno }}
                         </button>
+
                     </h2>
                     <div id="collapse{{ $mesDoAno }}" class="accordion-collapse collapse show"
                         aria-labelledby="heading{{ $mesDoAno }}" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             @foreach ($manutencoes as $manutencoesFeitas)
                                 @if ($key + 1 == date('m', strtotime($manutencoesFeitas->created_at)))
-                                    <li href="#"
-                                        class="list-group-item list-group-item-action shadow-lg p-3 mb-2 bg-body rounded">
-                                        <span
-                                            class="border border-danger rounded">{{ date('d/m', strtotime($manutencoesFeitas->created_at)) }}</span>
-                                        - {{ $manutencoesFeitas->sigla }} - {{ $manutencoesFeitas->endereco }} -
-                                        {{ $manutencoesFeitas->tipo }}
-                                    </li>
+                                    <a class="navbar-brand" href="/pdfDeOs/{{ $manutencoesFeitas->id }}">
+                                        <li href="#"
+                                            class="list-group-item list-group-item-action shadow-lg p-3 mb-2 bg-body rounded">
+                                            <span
+                                                class="border border-danger rounded">{{ date('d/m', strtotime($manutencoesFeitas->created_at)) }}</span>
+                                            - {{ $manutencoesFeitas->sigla }} - {{ $manutencoesFeitas->endereco }} -
+                                            {{ $manutencoesFeitas->tipo }}
+                                        </li>
+                                    </a>
                                 @endif
                             @endforeach
                         </div>
@@ -83,23 +87,18 @@
     <script>
         var btnMes = document.querySelectorAll('.accordion-button');
         var corpoDoAcordeao = document.querySelectorAll('.accordion-body');
-       
-       
+
+
         for (let i = 0; i < corpoDoAcordeao.length; i++) {
 
             var li = corpoDoAcordeao[i].querySelector('.list-group-item');
             if (li !== null) {
-                
-                btnMes[i].setAttribute("class","accordion-button bg-danger")
+
+                btnMes[i].setAttribute("class", "accordion-button bg-danger")
 
             }
 
-    }
-        
-
-        
-        
-        
+        }
     </script>
 
 </body>

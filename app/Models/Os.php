@@ -24,7 +24,7 @@ class Os extends Model
     {
 
 
-        return $this->hasOne('App\Models\Elevador', 'foreign_key');
+        return $this->hasOne('App\Models\Manutencao', 'foreign_key');
 
     }
 }

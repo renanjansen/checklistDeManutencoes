@@ -108,8 +108,8 @@
                 <div class="col-12">
                
                     <input class="form-control" type="text" id="cliente" name="cliente"
-                        value="{{ $elevador->endereco }}">
-                        <input type="hidden" name="id" value="{{ $elevador->id }}">
+                    value="{{ $elevador->endereco }}">
+                    <input type="hidden" name="id" value="{{ $elevador->id }}">
                     <input type="hidden" name="sigla" value="{{ $elevador->sigla }}">
                     <input type="hidden" name="endereco" value="{{ $elevador->endereco }}">
                     <input type="hidden" name="tipo" value="{{ $elevador->tipo }}">

@@ -11,10 +11,12 @@ use App\Models\Manutencao;
 class GeradorDePdfController extends Controller
 {
     //
-    public function geraPdf(){
+    public function geraPdf($id){
 
-        $id = 1;
-        $oss = Os::all()->where('id',$id);
+
+        $$oss = Os::all()->where('manutencao_id', $id);
+
+
 
         return \PDF::loadView('pdfDeOs',
         [
@@ -23,19 +25,20 @@ class GeradorDePdfController extends Controller
         ],
         compact('oss')
 
-        )->setPaper('a4', 'landscape')->download('registro_de_os.pdf');
+        )->setPaper('a4', 'landscape')->stream('registro_de_os.pdf');
+
 
     }
-    public function montaPdf(){
+    public function montaPdf($id){
 
-        $oss = Os::all()->where('id',1);
+        $oss = Os::all()->where('manutencao_id', $id);
+
+
 
         return view('pdfDeOs',
-        [
-            'Oss' => $oss,
-
-        ]
+            [
+                'Oss' => $oss
+            ]
         );
-
     }
 }
