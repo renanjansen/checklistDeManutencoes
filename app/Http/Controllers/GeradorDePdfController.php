@@ -14,21 +14,20 @@ class GeradorDePdfController extends Controller
     public function geraPdf($id){
 
 
-        $$oss = Os::all()->where('manutencao_id', $id);
+        $oss = Os::all()->where('manutencao_id', $id);
 
 
 
-        return \PDF::loadView('pdfDeOs',
+        return \PDF::loadView('imprimePdfDeOs',
         [
             'Oss' => $oss,
 
         ],
-        compact('oss')
-
-        )->setPaper('a4', 'landscape')->stream('registro_de_os.pdf');
+        compact('oss'))->setPaper('a4', 'landscape')->stream('registro_de_os.pdf');
 
 
     }
+    
     public function montaPdf($id){
 
         $oss = Os::all()->where('manutencao_id', $id);
