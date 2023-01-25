@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    
+
     <main class="bg-dark mt-5 pt-5">
         @foreach ($Oss as $os)
             <form action="" id="formulario" enctype="multipart/form-data" class="text-white pb-2 mt-3">
@@ -70,7 +70,7 @@
                 <div class="form-group row text-center mt-3">
                     <div class="mb-3">
                         <h3>Fotos e vídeos de Elevadores : </h3>
-                        <img src="/img/imagens/{{ $os->imagens }}" class="img-thumbnail" alt="">
+                        <img src="./img/imagens/{{ $os->imagens }}" class="img-thumbnail" alt="">
                     </div>
                 </div>
         @endforeach
