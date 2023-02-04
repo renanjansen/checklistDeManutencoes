@@ -20,41 +20,53 @@
 </head>
 
 <body>
-
-    <main class="bg-dark mt-5 pt-5">
+    <header class="container-fluid text-center mb-3">
+        <div class="row bg-light">
+            <div class="col">
+                <h3>Sobe e Desce Elevadores</h3>
+            </div>
+            <div class="col">
+                <img class=""
+                    src="https://www.cutedrop.com.br/wp-content/uploads/2017/07/willy-wonka-e1499947192382.jpg"
+                    alt="Bootstrap" width="30" height="24">
+            </div>
+        </div>
+    </header>
+    <main class="container-fluid">
         @foreach ($Oss as $os)
-            <form action="" id="formulario" enctype="multipart/form-data" class="text-white pb-2 mt-3">
-                @csrf
-                <div class=" col-3 form-group row mx-auto text-center mb-3">
-                    <p>Tipo de atendimento :</p>
-
+            <form action="" id="formulario" enctype="multipart/form-data" class="text-dark  pb-2 mt-1">
+                <div class="col-auto form-group row mx-auto text-center mb-1">
+                    <label for="cliente" class="col-12 col-form-label  text-center">Número do atendimento :</label>
+                    <input class="form-control text-center" type="text" id="cliente" name="cliente"
+                        value="{{ $os->id }}" disabled>
+                </div>
+                <div class="col-auto form-group row mx-auto text-center mb-1">
+                    <label for="cliente" class="col-12 col-form-label  text-center">Tipo de atendimento :</label>
                     <input class="form-control text-center" type="text" id="cliente" name="cliente"
                         value="{{ $os->atendimento }}" disabled>
                 </div>
 
-                <div class="form-group row mb-3">
+                <div class="col-auto form-group row mb-1">
                     <label for="cliente" class="col-12 col-form-label  text-center">Cliente :</label>
-                    <div class="col-12">
-
-                        <input class="form-control text-center" type="text" id="cliente" name="cliente"
-                            value="{{ $os->cliente }}" disabled>
-                    </div>
+                    <input class="form-control text-center" type="text" id="cliente" name="cliente"
+                        value="{{ $os->cliente }}" disabled>
                 </div>
 
-                <div class="form-group row mb-3">
-                    <div class="col-12">
+                <div class="form-group row mb-1">
+                    <label for="defeito" class="text-center">Mecânico :</label>
+                    <div class="text-center mb-3">
                         <input class="form-control text-center" type="text" id="mecanico" name="mecanico"
                             placeholder="insira o nome do(s) mecânico(s)" value="{{ $os->mecanico }}" disabled>
                     </div>
                 </div>
-                <div class="form-group row mb-3">
+                <div class="form-group row mb-1">
                     <label for="defeito" class="text-center">Defeito encontrado :</label>
                     <div class="text-center mb-3">
                         <input class="form-control text-center" type="text" id="solucao" name="solucao"
                             value="{{ $os->defeito }}" disabled />
                     </div>
                 </div>
-                <div class="form-group row mb-3">
+                <div class="form-group row mb-1">
                     <label for="solucao" class="text-center mb-2">Soluçâo do problema :</label>
                     <div class="text-center">
                         <input class="form-control text-center" type="text" id="solucao" name="solucao"
@@ -67,10 +79,11 @@
                     <input class="form-control text-center" type="text" id="cliente" name="cliente"
                         value="{{ $os->material }}" disabled>
                 </div>
-                <div class="form-group row text-center mt-3">
+                <div class="form-group row text-center mt-1">
                     <div class="mb-3">
                         <h3>Fotos e vídeos de Elevadores : </h3>
-                        <img src="./img/imagens/{{ $os->imagens }}" class="img-thumbnail" alt="">
+                        <img src="./img/imagens/{{ $os->imagens }}" class="img-thumbnail" alt="" height="150"
+                            width="200">
                     </div>
                 </div>
         @endforeach

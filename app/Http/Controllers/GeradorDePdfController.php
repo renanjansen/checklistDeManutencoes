@@ -23,11 +23,11 @@ class GeradorDePdfController extends Controller
             'Oss' => $oss,
 
         ],
-        compact('oss'))->setPaper('a4', 'landscape')->stream('registro_de_os.pdf');
+        compact('oss'))->setPaper('a4', 'portrait')->stream('registro_de_os.pdf');
 
 
     }
-    
+
     public function montaPdf($id){
 
         $oss = Os::all()->where('manutencao_id', $id);
