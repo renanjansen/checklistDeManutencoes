@@ -28,7 +28,7 @@
             <div class="col">
                 <img class=""
                     src="https://www.cutedrop.com.br/wp-content/uploads/2017/07/willy-wonka-e1499947192382.jpg"
-                    alt="Bootstrap" width="30" height="24">
+                    alt="Bootstrap" width="50" height="24">
             </div>
         </div>
     </header>

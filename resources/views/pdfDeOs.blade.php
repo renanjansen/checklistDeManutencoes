@@ -27,8 +27,7 @@
 
                 Sobe e Desce Elevadores
                 <img src="https://www.cutedrop.com.br/wp-content/uploads/2017/07/willy-wonka-e1499947192382.jpg"
-                    alt="logo sobe e desce elevadores" class="rounded img-thumbnail" width=100 height=70>
-                </a>
+                    alt="logo sobe e desce elevadores" class="rounded img-thumbnail" width="50" height="35">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -126,7 +125,7 @@
                 <div class="form-group row text-center mt-3">
                     <div class="mb-3">
                         <h3>Fotos e vídeos de Elevadores : </h3>
-                        <img src="/img/imagens/{{ $os->imagens }}" class="img-thumbnail" alt="">
+                        <img src="/img/imagens/{{ $os->imagens }}" class="img-thumbnail" alt="" width="300" height="200">
                     </div>
                 </div>
             </form>
@@ -140,7 +139,7 @@
         @endforeach
 
 
-        
+
 
 
     </main>

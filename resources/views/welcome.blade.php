@@ -48,8 +48,8 @@
         </nav>
     </header>
     @if (session('msg'))
-                        <p class="msg text-center" style="background-color: gold; border-color:black;">{{ session('msg') }}</p>
-            @endif
+        <p class="msg text-center" style="background-color: gold; border-color:black;">{{ session('msg') }}</p>
+    @endif
     <main class="mt-5">
         <div class="list-group text-center container-fluid">
             @foreach ($elevadores as $elevador)
@@ -57,26 +57,33 @@
 
                     {{-- MUITO IMPORTANTE!! A diretiva csrf avisa o blade do salvamento  de dados --}}
                     @csrf
+                    <div class="container-fluid text-center position-relative">
+                        <li href="#"
+                            class="list-group-item list-group-item-action shadow-lg p-3 mb-2 bg-body rounded ratio"
+                            style="--bs-aspect-ratio: 15%;">
 
-                    <li href="#"
-                        class="list-group-item list-group-item-action shadow-lg p-3 mb-2 bg-body rounded">
-                        {{ $elevador->sigla }} - {{ $elevador->endereco }} - {{ $elevador->tipo }}
-                        <div class="">
-                           
+
                             <input type="hidden" name="id" value="{{ $elevador->id }}">
-                            <div class="embed-responsive embed-responsive-16by9 m-2">
-                            <iframe class="embed-responsive-item" frameborder="0" style="border:0"
+
+                            <iframe class="embed-responsive-item" style="border:0"
                                 referrerpolicy="no-referrer-when-downgrade"
-                                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC01rey-uIpM1uQFDRTlaCSKG3pGaH3TaA&q={{str_replace(" ","+", $elevador->endereco)}}"
+                                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC01rey-uIpM1uQFDRTlaCSKG3pGaH3TaA&q={{ str_replace(' ', '+', $elevador->endereco) }}"
                                 allowfullscreen>
                             </iframe>
-                            </div>
-                            <a href="/registroDeOs/{{ $elevador->id}}">
-                            <button type="button" class="btn btn-success pr-5" onclick="return confirm('Tem certeza que deseja cadastrar o elevador  {{ $elevador->endereco }} ?')">Cadastrar manutenção</button>
-                      
+
+                        </li>
+                        <div class="container-fluid mb-5">
+                            <a href="/registroDeOs/{{ $elevador->id }}">
+                                <button type="button" class="btn btn-outline-success pr-5"
+                                    onclick="return confirm('Tem certeza que deseja cadastrar o elevador  {{ $elevador->endereco }} ?')">
+                                    {{ $elevador->sigla }} - {{ $elevador->endereco }} - {{ $elevador->tipo }}
+                                    Cadastrar
+                                    manutenção
+                                </button>
                             </a>
-                              </div>
-                    </li>
+                        </div>
+                    </div>
+
 
 
                 </form>
