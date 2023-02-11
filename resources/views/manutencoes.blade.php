@@ -59,9 +59,8 @@
                                 @if ($key + 1 == date('m', strtotime($manutencoesFeitas->created_at)))
                                     <a class="navbar-brand" href="/pdfDeOs/{{ $manutencoesFeitas->id }}">
                                         <li href="#"
-                                            class="list-group-item list-group-item-action shadow-lg p-3 mb-2 bg-body rounded">
-                                            <span
-                                                class="border border-danger rounded">{{ date('d/m', strtotime($manutencoesFeitas->created_at)) }}</span>
+                                            class="list-group-item list-group-item-action shadow-lg p-3 mb-2 bg-body rounded overflow-scroll">
+                                                <span class="border border-danger rounded">{{ date('d/m', strtotime($manutencoesFeitas->created_at)) }}</span>
                                             - {{ $manutencoesFeitas->sigla }} - {{ $manutencoesFeitas->endereco }} -
                                             {{ $manutencoesFeitas->tipo }}
                                         </li>
