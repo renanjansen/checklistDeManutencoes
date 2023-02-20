@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ListaEnderecoController;
 use App\Http\Controllers\OsController;
 use App\Http\Controllers\GeradorDePdfController;
+use App\Mail\SendMailRegistroOs;
+use Illuminate\Support\Facades\Mail;
 
 Route::get('/' ,[ListaEnderecoController::class, 'listarEnderecos']);
 Route::get('/manutencoes' ,[ListaEnderecoController::class, 'listarManutencoes']);
@@ -25,7 +27,14 @@ Route::get('/imprimePdfDeOs/{id}', [GeradorDePdfController::class, 'geraPdf']);
 
 
 
+/*envio de os por email
+* Rota que utiliza a Classe return new App\Mail\SendMailRegistroOs();
+*/
+Route::get('/mailable', function () {
 
+    //return new App\Mail\SendMailRegistroOs();
+    Mail::send(new App\Mail\SendMailRegistroOs());
+});
 
 
 // define a rota que recebe dados via post da view de cadastro
