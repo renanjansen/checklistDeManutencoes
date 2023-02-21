@@ -8,10 +8,17 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Os;
+use App\Http\Controllers\GeradorDePdfController;
 
 class SendMailRegistroOs extends Mailable
 {
     use Queueable, SerializesModels;
+
+    /**
+     * The order instance.
+     *
+     * @var Pdf
+     */
 
     /**
      * Create a new message instance.
@@ -21,6 +28,11 @@ class SendMailRegistroOs extends Mailable
     public function __construct()
     {
         //
+
+
+
+
+
     }
 
     /**
@@ -30,10 +42,14 @@ class SendMailRegistroOs extends Mailable
      */
     public function build()
     {
-        $to = 'freirevan41.vf@gmail.com';
+
+        //Os::all()->where('manutencao_id', );
+        $to = 'renanjansen@gmail.com';
         //Mail::to($to)->send(new SendMailRegistroOs());
         $this->subject('Os de Manutenção');
+       // $this->attachData($this->geraPdf(15) ,'registro_de_os.pdf');
         $this->to($to);
-        return $this->view('mail.SendMailRegistroOs');
+        return $this->markdown('mail.SendMailRegistroOs');
+
     }
 }

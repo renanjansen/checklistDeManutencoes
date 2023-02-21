@@ -32,8 +32,8 @@ Route::get('/imprimePdfDeOs/{id}', [GeradorDePdfController::class, 'geraPdf']);
 */
 Route::get('/mailable', function () {
 
-    //return new App\Mail\SendMailRegistroOs();
-    Mail::send(new App\Mail\SendMailRegistroOs());
+    return new App\Mail\SendMailRegistroOs();
+    //Mail::send(new App\Mail\SendMailRegistroOs());
 });
 
 
