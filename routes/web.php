@@ -30,11 +30,9 @@ Route::get('/imprimePdfDeOs/{id}', [GeradorDePdfController::class, 'geraPdf']);
 /*envio de os por email
 * Rota que utiliza a Classe return new App\Mail\SendMailRegistroOs();
 */
-Route::get('/mailable', function () {
+Route::get('/mailable/{id}', [SendMailRegistroOs::class, 'build']);
 
-    return new App\Mail\SendMailRegistroOs();
-    //Mail::send(new App\Mail\SendMailRegistroOs());
-});
+Route::get('/exibePdf',[SendMailRegistroOs::class, 'exibePdf'])->name('exibePdf');
 
 
 // define a rota que recebe dados via post da view de cadastro

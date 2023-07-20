@@ -130,7 +130,7 @@
                 </div>
             </form>
                 <div class="col-1 form-group row mx-auto">
-                    <a class="navbar-brand" href="/imprimePdfDeOs/{{ $os->manutencao_id }}" target="_blank" onclick=" location.href = '/mailable' ">
+                    <a class="navbar-brand" href="/imprimePdfDeOs/{{ $os->manutencao_id }}" target="_blank" onclick=" location.href = '/mailable/{{ $os->manutencao_id }}' ">
                         <button class="btn btn-primary"
                             id="imprime">
                             Imprimir

@@ -14,6 +14,7 @@ class SendMailRegistroOs extends Mailable
 {
     use Queueable, SerializesModels;
 
+
     /**
      * The order instance.
      *
@@ -27,11 +28,6 @@ class SendMailRegistroOs extends Mailable
      */
     public function __construct()
     {
-        //
-
-
-
-
 
     }
 
@@ -43,13 +39,37 @@ class SendMailRegistroOs extends Mailable
     public function build()
     {
 
+        $pdfFilePath = storage_path('/storage/temp/registro_de_os.pdf');
         //Os::all()->where('manutencao_id', );
         $to = 'renanjansen@gmail.com';
         //Mail::to($to)->send(new SendMailRegistroOs());
         $this->subject('Os de Manutenção');
        // $this->attachData($this->geraPdf(15) ,'registro_de_os.pdf');
         $this->to($to);
-        return $this->markdown('mail.SendMailRegistroOs');
+        return $this->subject('Assunto do E-mail')
+                    ->markdown('mail.SendMailRegistroOs') // Substitua "minhaView" pelo nome da sua view Blade do e-mail
+                    ->attach($pdfFilePath, [
+                        'as' => 'registro_de_os.pdf', // Nome do arquivo anexado ao e-mail
+                        'mime' => 'application/pdf', // Tipo MIME do arquivo (PDF)
+                    ]);
 
     }
+
+    public function exibePdf() {
+        $pdfFilePath = storage_path('temp/registro_de_os.pdf');
+
+        // Verifica se o arquivo PDF existe
+        if (!file_exists($pdfFilePath)) {
+            abort(404, 'O arquivo PDF não foi encontrado.');
+        }
+
+        // Define o tipo de resposta como PDF
+        $headers = [
+            'Content-Type' => 'application/pdf',
+        ];
+
+        // Retorna a resposta HTTP com o conteúdo do PDF
+        return response()->file($pdfFilePath, $headers);
+    }
+
 }

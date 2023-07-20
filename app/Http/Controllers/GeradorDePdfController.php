@@ -17,6 +17,11 @@ class GeradorDePdfController extends Controller
         $oss = Os::all()->where('manutencao_id', $id);
 
 
+        $pdf = \PDF::loadView('imprimePdfDeOs', [
+            'Oss' => $oss,
+        ])->setPaper('a4', 'portrait');
+
+        $this->salvarPdfDeOs($pdf);
 
         return \PDF::loadView('imprimePdfDeOs',
         [
@@ -24,6 +29,9 @@ class GeradorDePdfController extends Controller
 
         ],
         compact('oss'))->setPaper('a4', 'portrait')->stream('registro_de_os.pdf');
+
+
+
 
 
     }
@@ -40,4 +48,25 @@ class GeradorDePdfController extends Controller
             ]
         );
     }
+
+    public function salvarPdfDeOs($pdf)
+{
+    // Defina o caminho do diretório de armazenamento
+    $storagePath = storage_path('temp');
+
+    // Verifique se o diretório de armazenamento existe; caso contrário, crie-o recursivamente
+    if (!file_exists($storagePath)) {
+        mkdir($storagePath, 0777, true);
+    }
+
+    // Defina o nome do arquivo PDF que será usado para sobrescrever o anterior
+    $pdfFileName = 'registro_de_os.pdf';
+
+    // Caminho completo do arquivo PDF no diretório de armazenamento
+    $pdfFilePath = $storagePath . DIRECTORY_SEPARATOR . $pdfFileName;
+
+    // Salve o PDF no caminho específico
+    file_put_contents($pdfFilePath, $pdf->output());
+}
+
 }
