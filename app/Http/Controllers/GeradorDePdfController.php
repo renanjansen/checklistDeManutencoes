@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Os;
 use App\Models\Elevador;
 use App\Models\Manutencao;
+use App\Mail\SendMailRegistroOs;
+use Illuminate\Support\Facades\Mail;
+
 
 
 class GeradorDePdfController extends Controller
@@ -69,4 +72,10 @@ class GeradorDePdfController extends Controller
     file_put_contents($pdfFilePath, $pdf->output());
 }
 
+public function enviarEmail()
+{
+    $dados = ['chave' => 'valor']; // Substitua com os dados que deseja enviar no e-mail
+    $to = 'renanjansen@gmail.com';
+    Mail::to($to)->send(new SendMailRegistroOs($dados));
+}
 }

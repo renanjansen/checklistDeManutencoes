@@ -26,10 +26,16 @@ class SendMailRegistroOs extends Mailable
      *
      * @return void
      */
-    public function __construct()
-    {
 
+     public $dados;
+
+    public function __construct($dados)
+    {
+        //
+        $this->dados = $dados;
     }
+
+
 
     /**
      * Build the message.
@@ -39,13 +45,8 @@ class SendMailRegistroOs extends Mailable
     public function build()
     {
 
-        $pdfFilePath = storage_path('/storage/temp/registro_de_os.pdf');
-        //Os::all()->where('manutencao_id', );
-        $to = 'renanjansen@gmail.com';
-        //Mail::to($to)->send(new SendMailRegistroOs());
-        $this->subject('Os de Manutenção');
-       // $this->attachData($this->geraPdf(15) ,'registro_de_os.pdf');
-        $this->to($to);
+        $pdfFilePath = storage_path('/temp/registro_de_os.pdf');
+
         return $this->subject('Assunto do E-mail')
                     ->markdown('mail.SendMailRegistroOs') // Substitua "minhaView" pelo nome da sua view Blade do e-mail
                     ->attach($pdfFilePath, [

@@ -30,7 +30,7 @@ Route::get('/imprimePdfDeOs/{id}', [GeradorDePdfController::class, 'geraPdf']);
 /*envio de os por email
 * Rota que utiliza a Classe return new App\Mail\SendMailRegistroOs();
 */
-Route::get('/mailable/{id}', [SendMailRegistroOs::class, 'build']);
+Route::get('/mailable/{id}', [GeradorDePdfController::class, 'enviarEmail']);
 
 Route::get('/exibePdf',[SendMailRegistroOs::class, 'exibePdf'])->name('exibePdf');
 
