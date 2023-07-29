@@ -56,21 +56,6 @@ class SendMailRegistroOs extends Mailable
 
     }
 
-    public function exibePdf() {
-        $pdfFilePath = storage_path('temp/registro_de_os.pdf');
-
-        // Verifica se o arquivo PDF existe
-        if (!file_exists($pdfFilePath)) {
-            abort(404, 'O arquivo PDF não foi encontrado.');
-        }
-
-        // Define o tipo de resposta como PDF
-        $headers = [
-            'Content-Type' => 'application/pdf',
-        ];
-
-        // Retorna a resposta HTTP com o conteúdo do PDF
-        return response()->file($pdfFilePath, $headers);
-    }
+    
 
 }

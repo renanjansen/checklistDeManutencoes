@@ -79,6 +79,9 @@
     <main class="bg-dark mt-5 pt-5">
         @foreach ($Oss as $os)
             <form action="" id="formulario" enctype="multipart/form-data" class="text-white pb-2 mt-3">
+                @if (session('msg'))
+                    <p class="msg text-center text-dark" style="background-color: gold; border-color:black;">{{ session('msg') }}</p>
+                @endif
                 @csrf
                 <div class=" col-3 form-group row mx-auto text-center mb-3">
                     <p>Tipo de atendimento :</p>
@@ -130,7 +133,7 @@
                 </div>
             </form>
                 <div class="col-1 form-group row mx-auto">
-                    <a class="navbar-brand" href="/imprimePdfDeOs/{{ $os->manutencao_id }}" target="_blank" onclick=" location.href = '/mailable/{{ $os->manutencao_id }}' ">
+                    <a class="navbar-brand" href="/imprimePdfDeOs/{{ $os->manutencao_id }}">
                         <button class="btn btn-primary"
                             id="imprime">
                             Imprimir

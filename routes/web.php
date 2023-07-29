@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ListaEnderecoController;
 use App\Http\Controllers\OsController;
 use App\Http\Controllers\GeradorDePdfController;
+use App\Http\Controllers\ConstrutorDeEmailController;
 use App\Mail\SendMailRegistroOs;
 use Illuminate\Support\Facades\Mail;
 
@@ -30,9 +31,9 @@ Route::get('/imprimePdfDeOs/{id}', [GeradorDePdfController::class, 'geraPdf']);
 /*envio de os por email
 * Rota que utiliza a Classe return new App\Mail\SendMailRegistroOs();
 */
-Route::get('/mailable/{id}', [GeradorDePdfController::class, 'enviarEmail']);
+Route::get('/imprimePdfDeOs/{id}', [ConstrutorDeEmailController::class, 'enviarEmail']);
 
-Route::get('/exibePdf',[SendMailRegistroOs::class, 'exibePdf'])->name('exibePdf');
+Route::get('/exibePdf',[ConstrutorDeEmailController::class, 'exibePdf'])->name('exibePdf');
 
 
 // define a rota que recebe dados via post da view de cadastro
