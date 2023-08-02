@@ -22,19 +22,56 @@
 
 <body class="">
     <header>
-        <nav class="navbar text-light bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-light bg-info bg-gradient text-white text-center fixed-top">
+            <div class="container-fluid text-center">
 
-            <div class="container-fluid mt-2 p-2">
-                <h3> Lista de Manutenções feitas</h3>
-                <a class="navbar-brand" href="/">
+                Sobe e Desce Elevadores
+                <img src="https://www.cutedrop.com.br/wp-content/uploads/2017/07/willy-wonka-e1499947192382.jpg"
+                    alt="logo sobe e desce elevadores" class="rounded img-thumbnail" width="50" height="35">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
 
-                    <button type="button" class="btn btn-primary position-relative p-3">
-                        Retornar a lista de endereços
-                        <i class="bi bi-view-list"style="font-size: 1rem;"></i>
-                    </button>
+                        <a class="nav-link" href="https://shpe.com.br/">
+                            Catálogo de peças
+                        </a>
 
-                </a>
 
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Ajuda ao mecânico
+                        </a>
+                        <ul class="dropdown-menu bg-ligth bg-gradient" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item"
+                                    href="https://moovitapp.com/rio_de_janeiro-322/poi/pt-br">Gps</a></li>
+                            <li><a class="dropdown-item" href="https://api.whatsapp.com/send?phone=5521985287059">Fale
+                                    com a Mesa</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item"
+                                    href="http://www.governoaberto.rj.gov.br/servicos/telefones-uteis">Telefones
+                                    úteis</a></li>
+                        </ul>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="position-relative">
+                <div class="container-fluid mt-2">
+                    <a class="navbar-brand" href="/">
+
+                        <button type="button" class="btn btn-primary position-relative p-3">
+                            Retornar a lista de endereços
+                            <i class="bi bi-view-list"style="font-size: 1rem;"></i>
+                        </button>
+                    </a>
+                </div>
             </div>
 
         </nav>
