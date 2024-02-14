@@ -15,7 +15,9 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+        </script>
 
 
         <title>Checklist Manutenções</title>
@@ -52,6 +54,8 @@
                                     href="https://moovitapp.com/rio_de_janeiro-322/poi/pt-br">Gps</a></li>
                             <li><a class="dropdown-item" href="https://api.whatsapp.com/send?phone=5521985287059">Fale
                                     com a Mesa</a></li>
+                            <li><a class="dropdown-item" type="button" href="https://elevadoreslib.netlify.app/"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal">Manuais de Elevadores</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -92,6 +96,24 @@
         <p class="msg text-center" style="background-color: gold; border-color:black;">{{ session('msg') }}</p>
     @endif
     <main class="mt-5">
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Manuais de Elevadores</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <iframe src="https://elevadoreslib.netlify.app/" width="100%" height="600"></iframe>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="list-group text-center container-fluid pt-5">
             @foreach ($elevadores as $elevador)
                 <form class="mb-1" action="/" method="POST" enctype="multipart/form-data">
@@ -124,10 +146,10 @@
                             </a>
                         </div>
                     </div>
-
-
-
                 </form>
             @endforeach
+            <div class="container-fluid text-center">
+                {{ $elevadores->links() }}
+            </div>
         </div>
     </main>

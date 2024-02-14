@@ -13,8 +13,8 @@ class ListaEnderecoController extends Controller
 {
     public function listarEnderecos()
     {
-        
-        
+
+
         // query que busca dados da coluna elevadores_id
         $manutencoesFeitas = Manutencao::all()->pluck('elevadores_id');
 
@@ -22,33 +22,34 @@ class ListaEnderecoController extends Controller
          $busca = request('buscar');
          if ($busca) {
             $elevadores = Elevador::where([
- 
+
                  // busca por palavras
                  ['endereco', 'like', '%' . $busca . '%']
- 
+
              ]
-                 
+
              )->get();
          } else{
             // nessa query a lista de elvadores será atualizada através da busca por manuntenções feitas
-            $elevadores = Elevador::all()->whereNotIn('id',$manutencoesFeitas);
+            $elevadores = Elevador::whereNotIn('id',$manutencoesFeitas)->paginate(6);
+           // dd(count($elevadores));
          }
-        
-        
-        
-        
+
+
+
+
         return view('welcome',
         [
             'elevadores' => $elevadores,
             'manutencoes' => $manutencoesFeitas
         ]
-    
+
     );
     }
 
-    public function cadastrarManutencoes(){
+    public function cadastrarManutencoes(Request $request){
 
-        
+
         $manutencoesFeitas = Manutencao::all()->pluck('elevadores_id');
         $elevadores = Elevador::all()->whereNotIn('id',$manutencoesFeitas);
 
@@ -91,11 +92,11 @@ class ListaEnderecoController extends Controller
             'manutencoes' => $manutencoesFeitas,
             'mesesDoAno' =>  $mesesDoAno,
             'temManutencao' => $temManutencao
-            
+
         ]
         );
 
     }
 
-    
+
 }

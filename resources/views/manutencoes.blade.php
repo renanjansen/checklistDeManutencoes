@@ -50,6 +50,7 @@
                                     href="https://moovitapp.com/rio_de_janeiro-322/poi/pt-br">Gps</a></li>
                             <li><a class="dropdown-item" href="https://api.whatsapp.com/send?phone=5521985287059">Fale
                                     com a Mesa</a></li>
+                            <li><a class="dropdown-item" href="https://elevadoreslib.netlify.app/" target="_blank">Manuais de Elevadores</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
