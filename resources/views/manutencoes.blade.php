@@ -50,7 +50,8 @@
                                     href="https://moovitapp.com/rio_de_janeiro-322/poi/pt-br">Gps</a></li>
                             <li><a class="dropdown-item" href="https://api.whatsapp.com/send?phone=5521985287059">Fale
                                     com a Mesa</a></li>
-                            <li><a class="dropdown-item" href="https://elevadoreslib.netlify.app/" target="_blank">Manuais de Elevadores</a></li>
+                            <li><a class="dropdown-item" href="https://elevadoreslib.netlify.app/"
+                                    target="_blank">Manuais de Elevadores</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -77,40 +78,67 @@
 
         </nav>
     </header>
-    <main class="mt-5">
+    <main class="mt-5 pt-5">
         <div class="accordion" id="accordionExample">
-            @foreach ($mesesDoAno as $key => $mesDoAno)
+            @foreach ($anosManutencoes as $ano)
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="heading{{ $mesDoAno }}">
-
-                        <button class="accordion-button {{ $temManutencao }}" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapse{{ $mesDoAno }}" aria-expanded="true"
-                            aria-controls="collapse{{ $mesDoAno }}" id="btnMes">
-                            {{ $mesDoAno }}
+                    <h2 class="accordion-header" id="heading{{ $ano }}">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapse{{ $ano }}" aria-expanded="true"
+                            aria-controls="collapse{{ $ano }}" id="btnAno">
+                            {{ $ano }}
                         </button>
-
                     </h2>
-                    <div id="collapse{{ $mesDoAno }}" class="accordion-collapse collapse show"
-                        aria-labelledby="heading{{ $mesDoAno }}" data-bs-parent="#accordionExample">
+                    <div id="collapse{{ $ano }}" class="accordion-collapse collapse show"
+                        aria-labelledby="heading{{ $ano }}" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            @foreach ($manutencoes as $manutencoesFeitas)
-                                @if ($key + 1 == date('m', strtotime($manutencoesFeitas->created_at)))
-                                    <a class="navbar-brand" href="/pdfDeOs/{{ $manutencoesFeitas->id }}">
-                                        <li href="#"
-                                            class="list-group-item list-group-item-action shadow-lg p-3 mb-2 bg-body rounded overflow-scroll">
-                                                <span class="border border-danger rounded">{{ date('d/m', strtotime($manutencoesFeitas->created_at)) }}</span>
-                                            - {{ $manutencoesFeitas->sigla }} - {{ $manutencoesFeitas->endereco }} -
-                                            {{ $manutencoesFeitas->tipo }}
-                                        </li>
-                                    </a>
-                                @endif
-                            @endforeach
+                            <div class="accordion" id="accordionMeses{{ $ano }}">
+                                @foreach ($mesesDoAno as $key => $mesDoAno)
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header"
+                                            id="heading{{ $ano }}-{{ $mesDoAno }}">
+                                            <button class="accordion-button {{ $temManutencao }}" type="button"
+                                                data-bs-toggle="collapse"
+                                                data-bs-target="#collapse{{ $ano }}-{{ $mesDoAno }}"
+                                                aria-expanded="true"
+                                                aria-controls="collapse{{ $ano }}-{{ $mesDoAno }}"
+                                                id="btnMes">
+                                                {{ $mesDoAno }}
+                                            </button>
+                                        </h2>
+                                        <div id="collapse{{ $ano }}-{{ $mesDoAno }}"
+                                            class="accordion-collapse collapse show"
+                                            aria-labelledby="heading{{ $ano }}-{{ $mesDoAno }}"
+                                            data-bs-parent="#accordionMeses{{ $ano }}">
+                                            <div class="accordion-body">
+                                                @foreach ($manutencoes as $manutencoesFeitas)
+                                                    @if (
+                                                        $ano == date('Y', strtotime($manutencoesFeitas->created_at)) &&
+                                                            $key + 1 == date('m', strtotime($manutencoesFeitas->created_at)))
+                                                        <a class="navbar-brand"
+                                                            href="/pdfDeOs/{{ $manutencoesFeitas->id }}">
+                                                            <li href="#"
+                                                                class="list-group-item list-group-item-action shadow-lg p-3 mb-2 bg-body rounded overflow-scroll">
+                                                                <span
+                                                                    class="border border-danger rounded">{{ date('d/m', strtotime($manutencoesFeitas->created_at)) }}</span>
+                                                                - {{ $manutencoesFeitas->sigla }} -
+                                                                {{ $manutencoesFeitas->endereco }} -
+                                                                {{ $manutencoesFeitas->tipo }}
+                                                            </li>
+                                                        </a>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
             @endforeach
-
         </div>
+
 
 
     </main>
